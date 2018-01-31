@@ -50,6 +50,11 @@ class CryptoSkill(MycroftSkill):
     def initialize(self):
         self.load_data_files(dirname(__file__))
         
+        #GLOBAL SECTION
+        TotalMarketCap_Intent = IntentBuilder("TotalMarketCapIntent").\
+            require("CryptoKeyword").require("MCKeyword").build()
+        self.register_intent(TotalMarketCap_Intent, self.handle_TotalMarketCap_Intent)
+        
         #BITCOIN SECTION
         BitcoinPrice_Intent = IntentBuilder("BitcoinPriceIntent").\
             require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
