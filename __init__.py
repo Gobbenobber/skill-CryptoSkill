@@ -65,7 +65,7 @@ class SurfaceControl(MycroftSkill):
         self.speak_dialog("BitcoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
-        
+        self.speak("dollars, you stupid motherfucker!")
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
