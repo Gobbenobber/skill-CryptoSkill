@@ -55,6 +55,10 @@ class CryptoSkill(MycroftSkill):
             require("CryptoKeyword").require("MCKeyword").build()
         self.register_intent(TotalMarketCap_Intent, self.handle_TotalMarketCap_Intent)
         
+        TopThreeCoins_Intent = IntentBuilder("TopThreeCoinsIntent").\
+            require("CryptoKeyword").require("TopThreeKeyword").build()
+        self.register_intent(TopThreeCoins_Intent, self.handle_TopThreeCoins_Intent)
+        
         #BITCOIN SECTION
         BitcoinPrice_Intent = IntentBuilder("BitcoinPriceIntent").\
             require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
@@ -75,29 +79,64 @@ class CryptoSkill(MycroftSkill):
         
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered.
+    
+    #GLOBAL SECTION
+    def handle_TotalMarketCap_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/global/").json()[0]["total_market_cap_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+    
+    def handle_TopThreeCoins_Intent
+        self.speak_dialog("TopThreeCoins")
+        TopThreeCoins = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=3").json()
+        TopCoin = TopThreeCoins[0]["name"]
+        TopCoinVal = TopThreeCoins[0]["price_usd"]
+        SecondCoin = TopThreeCoins[1]["name"]
+        SecondCoinVal = TopThreeCoins[1]["price_usd"]
+        ThirdCoin = TopThreeCoins[2]["name"]
+        ThirdCoinVal = TopThreeCoins[2]["price_usd"]
+        self.speak("The most valuable coin is:")
+        self.speak(TopCoin)
+        self.speak("Which currently has a market value of:")
+        self.speak(TopCoinVal)
+        self.speak("per coin.")
+        self.speak("The second most valuable coin is:")
+        self.speak(SecondCoin)
+        self.speak("Which currently has a market value of:")
+        self.speak(SecondCoinVal)
+        self.speak("per coin.")
+        self.speak("The third most valuable coin is:")
+        self.speak(ThirdCoin)
+        self.speak("Which currently has a market value of:")
+        self.speak(ThirdCoinVal)
+        self.speak("per coin.")
+       
+    #BITCOIN SECTION
     def handle_BitcoinPrice_Intent(self, message):
         self.speak_dialog("BitcoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
-        self.speak("dollars.")
+        self.speak("US dollars.")
         
     def handle_BitcoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
         self.speak(data)
-        self.speak("dollars.")    
+        self.speak("US dollars.")    
         
+        #LITECOIN SECTION
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
         self.speak(data)
-        self.speak("dollars.")
+        self.speak("US dollars.")
         
     def handle_LitecoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
         self.speak(data)
-        self.speak("dollars.")
+        self.speak("US dollars.")
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution.
     def stop(self):
