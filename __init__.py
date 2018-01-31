@@ -83,8 +83,8 @@ class CryptoSkill(MycroftSkill):
     #GLOBAL SECTION
     def handle_TotalMarketCap_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/global/").json()["total_market_cap_usd"]
-        self.speak(data)
+        data = requests.get("https://api.coinmarketcap.com/v1/global/").json()
+        self.speak(data["total_market_cap_usd"])
         self.speak("US dollars.")
     
     def handle_TopThreeCoins_Intent(self, message):
@@ -137,6 +137,7 @@ class CryptoSkill(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
+        
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution.
     def stop(self):
