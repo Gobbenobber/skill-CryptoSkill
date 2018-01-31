@@ -100,17 +100,17 @@ class CryptoSkill(MycroftSkill):
         self.speak(TopCoin)
         self.speak("Which currently has a market value of:")
         self.speak(TopCoinVal)
-        self.speak("per coin.")
+        self.speak("US dollars per coin.")
         self.speak("The second most valuable coin is:")
         self.speak(SecondCoin)
         self.speak("Which currently has a market value of:")
         self.speak(SecondCoinVal)
-        self.speak("per coin.")
+        self.speak("US dollars per coin.")
         self.speak("The third most valuable coin is:")
         self.speak(ThirdCoin)
         self.speak("Which currently has a market value of:")
         self.speak(ThirdCoinVal)
-        self.speak("per coin.")
+        self.speak("US dollars per coin.")
        
     #BITCOIN SECTION
     def handle_BitcoinPrice_Intent(self, message):
