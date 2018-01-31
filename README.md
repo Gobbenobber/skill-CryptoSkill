@@ -13,7 +13,7 @@ Working features:
     * Market cap
 
 Known issues:
- - Language unsuitable for minors...
+- None so far...
 
 TODO:
  - Crypto top 10
