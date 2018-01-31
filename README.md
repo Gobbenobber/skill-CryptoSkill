@@ -1,6 +1,6 @@
 # CryptoSkill
 
-This skill REKS.
+This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com to deliver cryptocurrency-related information 
 
 ## Current state
 
