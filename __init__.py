@@ -31,7 +31,7 @@ from mycroft.util.log import getLogger
 
 import requests
 
-__author__ = 'Patrick Bjerregaard & Malthe Dalgaard Jensen'
+__author__ = 'Patrick Bjerregaard and Malthe Dalgaard Jensen'
 
 # Logger: used for debug lines, like "LOGGER.debug(xyz)". These
 # statements will show up in the command line when running Mycroft.
