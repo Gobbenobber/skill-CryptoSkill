@@ -66,9 +66,6 @@ class SurfaceControl(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
         
-    #    with urllib.request.urlopen("https://api.coinmarketcap.com/v1/ticker/?limit=10") as url:
-    #        data = json.loads(url.read().decode())
-    #    print(data)
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
