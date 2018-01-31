@@ -10,10 +10,12 @@ Working features:
     * Market cap
  - Litecoin
     * Price
-    * Market cap
-
+ - Top three cryptocurrencies
+ - Total market cap
+ 
 Known issues:
-- None so far...
+- Litecoin
+    * Market cap
 
 TODO:
  - Crypto top 10
