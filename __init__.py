@@ -29,7 +29,9 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
-__author__ = 'Patrick'
+import urllib.request, json 
+
+__author__ = 'Malthe'
 
 # Logger: used for debug lines, like "LOGGER.debug(xyz)". These
 # statements will show up in the command line when running Mycroft.
@@ -61,7 +63,9 @@ class StonerSkill(MycroftSkill):
     # the method is called.
     def handle_stoner_intent(self, message):
         self.speak_dialog("stoner")
-
+        with urllib.request.urlopen("https://api.coinmarketcap.com/v1/ticker/?limit=10") as url:
+        data = json.loads(url.read().decode())
+        print(data)
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
