@@ -1,6 +1,6 @@
 # CryptoSkill
 
-This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com to deliver cryptocurrency-related information 
+This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com to deliver cryptocurrency-related functoinality for Mycroft. 
 
 ## Current state
 
