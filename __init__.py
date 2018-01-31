@@ -50,6 +50,7 @@ class CryptoSkill(MycroftSkill):
     # creates and registers each intent that the skill uses
     def initialize(self):
         self.load_data_files(dirname(__file__))
+        
         #BITCOIN SECTION
         BitcoinPrice_Intent = IntentBuilder("BitcoinPriceIntent").\
             require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
@@ -75,20 +76,19 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("BitcoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
-        self.speak("dollars, you stupid motherfucker!")
+        self.speak("dollars.")
         
     def handle_BitcoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
         self.speak(data)
-        self.speak("dollars, you stupid motherfucker!")    
+        self.speak("dollars.")    
         
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
         self.speak(data)
-        self.speak("dollars, you stupid motherfucker!")
-        
+        self.speak("dollars.")
         
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
