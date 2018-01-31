@@ -1,6 +1,6 @@
-# PROJECT_NAME skill
+# SurfaceControl skill
 
-This skill does ...
+This skill REKS.
 
 To get this done we need
   - This
@@ -17,4 +17,4 @@ Known issues:
  - ...
 
 TODO:
- - ...
+ - Crypto top 10

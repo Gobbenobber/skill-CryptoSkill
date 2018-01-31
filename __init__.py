@@ -29,7 +29,9 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
-__author__ = 'Patrick'
+import requests
+
+__author__ = 'Malthe'
 
 # Logger: used for debug lines, like "LOGGER.debug(xyz)". These
 # statements will show up in the command line when running Mycroft.
@@ -38,30 +40,45 @@ LOGGER = getLogger(__name__)
 # The logic of each skill is contained within its own class, which inherits
 # base methods from the MycroftSkill class with the syntax you can see below:
 # "class ____Skill(MycroftSkill)"
-class StonerSkill(MycroftSkill):
+class SurfaceControl(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
-        super(StonerSkill, self).__init__(name="StonerSkill")
+        super(SurfaceControl, self).__init__(name="SurfaceControl")
 
     # This method loads the files needed for the skill's functioning, and
     # creates and registers each intent that the skill uses
     def initialize(self):
         self.load_data_files(dirname(__file__))
 
-        stoner_intent = IntentBuilder("StonerIntent").\
-            require("StonerKeyword").build()
-        self.register_intent(stoner_intent, self.handle_stoner_intent)
+        BitcoinPrice_Intent = IntentBuilder("BitcoinPriceIntent").\
+            require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(BitcoinPrice_Intent, self.handle_BitcoinPrice_Intent)
 
+        LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
+            require("LitecoinKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
+
+        
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
     # speaks a response. Note that the "speak_dialog" method doesn't
     # actually speak the text it's passed--instead, that text is the filename
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
-    def handle_stoner_intent(self, message):
-        self.speak_dialog("stoner")
-
+    def handle_BitcoinPrice_Intent(self, message):
+        self.speak_dialog("BitcoinPrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("dollars, you stupid motherfucker!")
+        
+    def handle_LitecoinPrice_Intent(self, message):
+        self.speak_dialog("LitecoinPrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("dollars, you stupid motherfucker!")
+        
+        
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
@@ -72,4 +89,4 @@ class StonerSkill(MycroftSkill):
 # The "create_skill()" method is used to create an instance of the skill.
 # Note that it's outside the class itself.
 def create_skill():
-    return StonerSkill()
+    return SurfaceControl()
