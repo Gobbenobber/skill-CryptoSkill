@@ -1,14 +1,16 @@
 # CryptoSkill
 
-This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com to deliver cryptocurrency-related functoinality for Mycroft. 
+This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com to deliver cryptocurrency-related functionality for Mycroft. 
 
 ## Current state
 
 Working features:
  - Bitcoin
     * Price
+    * Market cap
  - Litecoin
     * Price
+    * Market cap
 
 Known issues:
  - Language unsuitable for minors...
