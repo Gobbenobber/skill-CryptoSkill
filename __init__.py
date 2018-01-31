@@ -55,6 +55,11 @@ class SurfaceControl(MycroftSkill):
             require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
         self.register_intent(BitcoinPrice_Intent, self.handle_BitcoinPrice_Intent)
 
+        LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
+            require("LitecoinKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
+
+        
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
     # speaks a response. Note that the "speak_dialog" method doesn't
@@ -66,6 +71,14 @@ class SurfaceControl(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
         self.speak("dollars, you stupid motherfucker!")
+        
+    def handle_LitecoinPrice_Intent(self, message):
+        self.speak_dialog("LitecoinPrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("dollars, you stupid motherfucker!")
+        
+        
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
