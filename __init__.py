@@ -75,6 +75,8 @@ class CryptoSkill(MycroftSkill):
     # actually speak the text it's passed--instead, that text is the filename
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
+    
+        #BITCOIN SECTION
     def handle_BitcoinPrice_Intent(self, message):
         self.speak_dialog("BitcoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
@@ -86,7 +88,7 @@ class CryptoSkill(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("dollars.")    
-        
+        #LITECOIN SECTION
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
