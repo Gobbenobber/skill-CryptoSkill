@@ -64,7 +64,7 @@ class SurfaceControl(MycroftSkill):
     def handle_Top10Crypto_intent(self, message):
         self.speak_dialog("BitcoinLookUpTop10")
         with urllib.request.urlopen("https://api.coinmarketcap.com/v1/ticker/?limit=10") as url:
-        data = json.loads(url.read().decode())
+            data = json.loads(url.read().decode())
         print(data)
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
