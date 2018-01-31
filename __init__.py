@@ -62,7 +62,7 @@ class SurfaceControl(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_Top10Crypto_intent(self, message):
-        self.speak_dialog("BitcoinLookUpTop10")
+        self.speak_dialog("BitcoinLookupTop10")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=10").json()
         self.speak(data)
         
