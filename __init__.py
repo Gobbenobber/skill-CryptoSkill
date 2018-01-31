@@ -21,8 +21,7 @@
 # instructions for designing your own skill based on this template.
 
 
-# Import statements: the list of outside modules you'll be using in your
-# skills, whether from other files in mycroft-core or from external libraries
+# Import statements: 
 from os.path import dirname
 
 from adapt.intent import IntentBuilder
