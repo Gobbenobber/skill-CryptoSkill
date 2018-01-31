@@ -63,7 +63,7 @@ class SurfaceControl(MycroftSkill):
     # the method is called.
     def handle_Top10Crypto_intent(self, message):
         self.speak_dialog("BitcoinLookupTop10")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=10").json()
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=10").json()['0']['price_usd']
         self.speak(data)
         
     #    with urllib.request.urlopen("https://api.coinmarketcap.com/v1/ticker/?limit=10") as url:
