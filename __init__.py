@@ -29,8 +29,6 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
-import urllib.request, json 
-
 __author__ = 'Malthe'
 
 # Logger: used for debug lines, like "LOGGER.debug(xyz)". These
