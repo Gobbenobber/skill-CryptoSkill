@@ -53,7 +53,7 @@ class SurfaceControl(MycroftSkill):
 
         Top10Crypto_intent = IntentBuilder("Top10CryptoIntent").\
             require("BitcoinTop10Keyword").build()
-        self.register_intent(Top10Crypto_intent, self.Top10Crypto_intent)
+        self.register_intent(Top10Crypto_intent, self.handle_Top10Crypto_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
