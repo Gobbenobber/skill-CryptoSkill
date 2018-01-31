@@ -61,10 +61,13 @@ class CryptoSkill(MycroftSkill):
         self.register_intent(BitcoinMC_Intent, self.handle_BitcoinMC_Intent)
         
         #LITECOIN SECTION
+        LitecoinMC_Intent = IntentBuilder("LitecoinMarketCapIntent").\
+            require("LitecoinKeyword").require("MCKeyword").build()
+        self.register_intent(LitecoinMC_Intent, self.handle_LitecoinMC_Intent)
+
         LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
             require("LitecoinKeyword").require("BitcoinPriceKeyword").build()
         self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
-
         
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -90,6 +93,11 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("dollars.")
         
+    def handle_LitecoinMC_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
+        self.speak(data)
+        self.speak("dollars.")
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
