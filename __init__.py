@@ -70,13 +70,7 @@ class CryptoSkill(MycroftSkill):
         self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
         
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
-    # each of the skill's intents is triggered: in this case, he simply
-    # speaks a response. Note that the "speak_dialog" method doesn't
-    # actually speak the text it's passed--instead, that text is the filename
-    # of a file in the dialog folder, and Mycroft speaks its contents when
-    # the method is called.
-    
-        #BITCOIN SECTION
+    # each of the skill's intents is triggered.
     def handle_BitcoinPrice_Intent(self, message):
         self.speak_dialog("BitcoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
@@ -88,7 +82,7 @@ class CryptoSkill(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("dollars.")    
-        #LITECOIN SECTION
+        
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
@@ -101,9 +95,7 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("dollars.")
     # The "stop" method defines what Mycroft does when told to stop during
-    # the skill's execution. In this case, since the skill's functionality
-    # is extremely simple, the method just contains the keyword "pass", which
-    # does nothing.
+    # the skill's execution.
     def stop(self):
         pass
 
