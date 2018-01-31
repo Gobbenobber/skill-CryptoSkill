@@ -31,7 +31,7 @@ from mycroft.util.log import getLogger
 
 import requests
 
-__author__ = 'Malthe'
+__author__ = 'Patrick Bjerregaard & Malthe Dalgaard Jensen'
 
 # Logger: used for debug lines, like "LOGGER.debug(xyz)". These
 # statements will show up in the command line when running Mycroft.
@@ -40,21 +40,26 @@ LOGGER = getLogger(__name__)
 # The logic of each skill is contained within its own class, which inherits
 # base methods from the MycroftSkill class with the syntax you can see below:
 # "class ____Skill(MycroftSkill)"
-class SurfaceControl(MycroftSkill):
+class CryptoSkill(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
-        super(SurfaceControl, self).__init__(name="SurfaceControl")
+        super(CryptoSkill, self).__init__(name="CryptoSkill")
 
     # This method loads the files needed for the skill's functioning, and
     # creates and registers each intent that the skill uses
     def initialize(self):
         self.load_data_files(dirname(__file__))
-
+        #BITCOIN SECTION
         BitcoinPrice_Intent = IntentBuilder("BitcoinPriceIntent").\
             require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
         self.register_intent(BitcoinPrice_Intent, self.handle_BitcoinPrice_Intent)
-
+        
+        BitcoinMC_Intent = IntentBuilder("BitcoinMarketCapIntent").\
+            require("BitcoinKeyword").require("MCKeyword").build()
+        self.register_intent(BitcoinMC_Intent, self.handle_BitcoinMC_Intent)
+        
+        #LITECOIN SECTION
         LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
             require("LitecoinKeyword").require("BitcoinPriceKeyword").build()
         self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
@@ -71,6 +76,12 @@ class SurfaceControl(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
         self.speak("dollars, you stupid motherfucker!")
+        
+    def handle_BitcoinMC_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
+        self.speak(data)
+        self.speak("dollars, you stupid motherfucker!")    
         
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
