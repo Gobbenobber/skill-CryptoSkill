@@ -51,9 +51,9 @@ class SurfaceControl(MycroftSkill):
     def initialize(self):
         self.load_data_files(dirname(__file__))
 
-        Top10Crypto_intent = IntentBuilder("Top10CryptoIntent").\
-            require("BitcoinTop10Keyword").build()
-        self.register_intent(Top10Crypto_intent, self.handle_Top10Crypto_intent)
+        BitcoinPrice_Intent = IntentBuilder("BitcoinPriceIntent").\
+            require("BitcoinKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(BitcoinPrice_Intent, self.handle_BitcoinPrice_Intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -61,8 +61,8 @@ class SurfaceControl(MycroftSkill):
     # actually speak the text it's passed--instead, that text is the filename
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
-    def handle_Top10Crypto_intent(self, message):
-        self.speak_dialog("BitcoinLookupTop10")
+    def handle_BitcoinPrice_Intent(self, message):
+        self.speak_dialog("BitcoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
         self.speak(data)
         
