@@ -10,12 +10,11 @@ Working features:
     * Market cap
  - Litecoin
     * Price
+    * Market cap
  - Top three cryptocurrencies
- - Total market cap
  
 Known issues:
-- Litecoin
-    * Market cap
+- Total market cap not working as intended - does not fetch dada successfully.
 
 TODO:
  - Crypto top 10
