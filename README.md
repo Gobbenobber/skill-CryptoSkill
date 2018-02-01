@@ -14,7 +14,7 @@ Working features:
  - Top three cryptocurrencies
  
 Known issues:
-- Total market cap not working as intended - does not fetch dada successfully.
+- Total market cap not working as intended - does not fetch data successfully.
 
 TODO:
  - Crypto top 10
