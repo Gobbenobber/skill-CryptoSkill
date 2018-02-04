@@ -4,7 +4,7 @@ This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com
 
 ## Current state
 
-Working features:
+###Working features:
  - Bitcoin
     * Price
     * Market cap
@@ -13,15 +13,15 @@ Working features:
     * Market cap
  - Top three cryptocurrencies
  
-Untested features:
+###Untested features:
  - Ripple
     * Price
     * Market cap
 
-Known issues:
+###Known issues:
 - Total market cap not working as intended - does not fetch data successfully.
 
-TODO:
+###TODO:
  - Crypto top 10
     * Price
     * 1 hour percent change
