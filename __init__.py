@@ -44,14 +44,23 @@ class CryptoSkill(MycroftSkill):
         self.register_intent(BitcoinMC_Intent, self.handle_BitcoinMC_Intent)
         
         #LITECOIN SECTION
+        LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
+            require("LitecoinKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
+
         LitecoinMC_Intent = IntentBuilder("LitecoinMarketCapIntent").\
             require("LitecoinKeyword").require("MCKeyword").build()
         self.register_intent(LitecoinMC_Intent, self.handle_LitecoinMC_Intent)
 
-        LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
-            require("LitecoinKeyword").require("BitcoinPriceKeyword").build()
-        self.register_intent(LitecoinPrice_Intent, self.handle_LitecoinPrice_Intent)
-        
+        #RIPPLE SECTION
+        RipplePrice_Intent = IntentBuilder("RipplePriceIntent").\
+            require("RippleKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(RipplePrice_Intent, self.handle_RipplePrice_Intent)
+
+        RippleMC_Intent = IntentBuilder("RippleMarketCapIntent").\
+            require("RippleKeyword").require("MCKeyword").build()
+        self.register_intent(Ripple_Intent, self.handle_RippleMC_Intent)
+
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered.
     
@@ -85,7 +94,7 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("US dollars.")    
         
-        #LITECOIN SECTION
+    #LITECOIN SECTION
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
@@ -95,6 +104,19 @@ class CryptoSkill(MycroftSkill):
     def handle_LitecoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+
+    #RIPPLE SECTION
+    def handle_RipplePrice_Intent(self, message):
+        self.speak_dialog("RipplePrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+        
+    def handle_RippleMC_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
