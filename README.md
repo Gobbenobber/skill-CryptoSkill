@@ -13,6 +13,11 @@ Working features:
     * Market cap
  - Top three cryptocurrencies
  
+Untested features:
+ - Ripple
+    * Price
+    * Market cap
+
 Known issues:
 - Total market cap not working as intended - does not fetch data successfully.
 
