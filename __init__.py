@@ -20,6 +20,8 @@ class CryptoSkill(MycroftSkill):
     def __init__(self):
         super(CryptoSkill, self).__init__(name="CryptoSkill")
 
+#--------------------------------INITIALIZER------------------------------
+
     # This method loads the files needed for the skill's functioning, and
     # creates and registers each intent that the skill uses
     def initialize(self):
@@ -59,7 +61,18 @@ class CryptoSkill(MycroftSkill):
 
         RippleMC_Intent = IntentBuilder("RippleMarketCapIntent").\
             require("RippleKeyword").require("MCKeyword").build()
-        self.register_intent(Ripple_Intent, self.handle_RippleMC_Intent)
+        self.register_intent(RippleMC_Intent, self.handle_RippleMC_Intent)
+
+		#CARDANO SECTION
+        CardanoPrice_Intent = IntentBuilder("CardanoPriceIntent").\
+            require("CardanoKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(CardanoPrice_Intent, self.handle_CardanoPrice_Intent)
+
+        CardanoMC_Intent = IntentBuilder("CardanoMarketCapIntent").\
+            require("CardanoKeyword").require("MCKeyword").build()
+        self.register_intent(CardanoMC_Intent, self.handle_CardanoMC_Intent)
+
+#--------------------------------HANDLERS------------------------------
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered.
@@ -117,6 +130,19 @@ class CryptoSkill(MycroftSkill):
     def handle_RippleMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["market_cap_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+
+    #CARDANO SECTION
+    def handle_CardanoPrice_Intent(self, message):
+        self.speak_dialog("CardanoPrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/cardano/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+        
+    def handle_CardanoMC_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/cardano/").json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
         

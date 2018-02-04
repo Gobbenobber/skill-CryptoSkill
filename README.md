@@ -17,6 +17,9 @@ This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com
  - Ripple
     * Price
     * Market cap
+ - Cardano
+    * Price
+    * Market cap
 
 ### Known issues:
 - Total market cap not working as intended - does not fetch data successfully.
