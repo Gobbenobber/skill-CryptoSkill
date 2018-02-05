@@ -63,6 +63,15 @@ class CryptoSkill(MycroftSkill):
             require("RippleKeyword").require("MCKeyword").build()
         self.register_intent(RippleMC_Intent, self.handle_RippleMC_Intent)
 
+        #ETHEREUM SECTION
+        EthereumPrice_Intent = IntentBuilder("EthereumPriceIntent").\
+            require("EthereumKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(EthereumPrice_Intent, self.handle_EthereumPrice_Intent)
+
+        EthereumMC_Intent = IntentBuilder("EthereumMarketCapIntent").\
+            require("EthereumKeyword").require("MCKeyword").build()
+        self.register_intent(EthereumMC_Intent, self.handle_EthereumMC_Intent)
+
 		#CARDANO SECTION
         CardanoPrice_Intent = IntentBuilder("CardanoPriceIntent").\
             require("CardanoKeyword").require("BitcoinPriceKeyword").build()
@@ -133,6 +142,19 @@ class CryptoSkill(MycroftSkill):
     def handle_RippleMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["market_cap_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+
+    #ETHEREUM SECTION
+    def handle_EthereumPrice_Intent(self, message):
+        self.speak_dialog("EthereumPrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ethereum/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+        
+    def handle_EthereumMC_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ethereum/").json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
