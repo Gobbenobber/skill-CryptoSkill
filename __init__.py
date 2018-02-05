@@ -89,7 +89,7 @@ class CryptoSkill(MycroftSkill):
         TopThreeCoins = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=3").json()
         for x in range(1,4):
             list = ['first','second','third']
-            sproken = "The %s. most valuable coin is: " % (list[x])
+            sproken = "The %s. most valuable coin is: " % (list[x-1])
             LOGGER.error("{0}".format(sproken))
             self.speak(sproken)
             self.speak(TopThreeCoins[x-1]["name"])
