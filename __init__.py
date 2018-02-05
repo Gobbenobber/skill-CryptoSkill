@@ -95,60 +95,66 @@ class CryptoSkill(MycroftSkill):
         	self.speak("US dollars per coin.")
        
     #BITCOIN SECTION
+    btcinfo = "https://api.coinmarketcap.com/v1/ticker/bitcoin/"
     def handle_BitcoinPrice_Intent(self, message):
         self.speak_dialog("BitcoinPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
+        data = requests.get(btcinfo).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_BitcoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
+        data = requests.get(btcinfo).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")    
         
     #LITECOIN SECTION
+    ltcinfo = "https://api.coinmarketcap.com/v1/ticker/litecoin/"
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
+        data = requests.get(ltcinfo).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_LitecoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
+        data = requests.get(ltcinfo).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
     #RIPPLE SECTION
+    xrpinfo = "https://api.coinmarketcap.com/v1/ticker/ripple/"
     def handle_RipplePrice_Intent(self, message):
         self.speak_dialog("RipplePrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["price_usd"]
+        data = requests.get(xrpinfo).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_RippleMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["market_cap_usd"]
+        data = requests.get(xrpinfo).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
     #CARDANO SECTION
+    adainfo = "https://api.coinmarketcap.com/v1/ticker/cardano/"
     def handle_CardanoPrice_Intent(self, message):
         self.speak_dialog("CardanoPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/cardano/").json()[0]["price_usd"]
+        data = requests.get(adainfo).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_CardanoMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/cardano/").json()[0]["market_cap_usd"]
+        data = requests.get(adainfo).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution.
     def stop(self):
+        if self.process:
+            self.process.terminate()
         pass
 
 # The "create_skill()" method is used to create an instance of the skill.
