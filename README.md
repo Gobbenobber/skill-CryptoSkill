@@ -9,7 +9,7 @@ This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com
 - Bitcoin (say "Bitcoin" and an option below in the same sentence)
   - Price
   - Market cap
-- Litecoin (say "BiLitecointcoin" and an option below in the same sentence)
+- Litecoin (say "Litecoin" and an option below in the same sentence)
   - Price
   - Market cap
 - Ripple (say "Ripple" and an option below in the same sentence)
