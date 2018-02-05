@@ -151,8 +151,6 @@ class CryptoSkill(MycroftSkill):
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution.
     def stop(self):
-        if self.process:
-            self.process.terminate()
         pass
 
 # The "create_skill()" method is used to create an instance of the skill.
