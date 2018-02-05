@@ -34,3 +34,5 @@ This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com
  - Total market cap
     * 24 hour percent change
  - More to come...
+ 
+| :heavy_check_mark:  | [CryptoSkill](https://github.com/Gobbenobber/skill-CryptoSkill#readme)| Retrieve name and price of the three most valuable cryptocurrencies<br>```What are the top three crypto coins?``` |
