@@ -87,7 +87,7 @@ class CryptoSkill(MycroftSkill):
     def handle_TopThreeCoins_Intent(self, message):
         self.speak_dialog("TopThreeCoins")
         TopThreeCoins = requests.get("https://api.coinmarketcap.com/v1/ticker/?limit=3").json()
-        for x in xrange(0,3):
+        for x in TopThreeCoins:
         	self.speak("The %d. most valuable coin is: " % (x+1)) 
         	self.speak(TopThreeCoins[x]["name"])
         	self.speak("Which currently has a market value of:")
