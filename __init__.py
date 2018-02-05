@@ -93,8 +93,8 @@ class CryptoSkill(MycroftSkill):
             self.speak(sproken)
             self.speak(TopThreeCoins[x]["name"])
             self.speak("Which currently has a market value of:")
-        	self.speak(TopThreeCoins[x]["price_usd"])
-        	self.speak("US dollars per coin.")
+            self.speak(TopThreeCoins[x]["price_usd"])
+            self.speak("US dollars per coin.")
        
     #BITCOIN SECTION
     def handle_BitcoinPrice_Intent(self, message):
