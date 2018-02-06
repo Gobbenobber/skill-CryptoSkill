@@ -7,23 +7,15 @@ import requests
 
 __author__ = 'Patrick B. Bjerregaard and Malthe Dalgaard Jensen'
 
-# Logger: used for debug lines, like "LOGGER.debug(xyz)". These
-# statements will show up in the command line when running Mycroft.
 LOGGER = getLogger(__name__)
 
-# The logic of each skill is contained within its own class, which inherits
-# base methods from the MycroftSkill class with the syntax you can see below:
-# "class ____Skill(MycroftSkill)"
 class CryptoSkill(MycroftSkill):
-
-    # The constructor of the skill,w which calls MycroftSkill's constructor
-    def __init__(self):
-        super(CryptoSkill, self).__init__(name="CryptoSkill")
 
 #--------------------------------INITIALIZER------------------------------
 
-    # This method loads the files needed for the skill's functioning, and
-    # creates and registers each intent that the skill uses
+    def __init__(self):
+        super(CryptoSkill, self).__init__(name="CryptoSkill")
+
     def initialize(self):
         self.load_data_files(dirname(__file__))
         
@@ -91,9 +83,6 @@ class CryptoSkill(MycroftSkill):
         self.register_intent(MoneroMC_Intent, self.handle_MoneroMC_Intent)
 
 #--------------------------------HANDLERS------------------------------
-
-    # The "handle_xxxx_intent" functions define Mycroft's behavior when
-    # each of the skill's intents is triggered.
     
     #GLOBAL SECTION
     def handle_TotalMarketCap_Intent(self, message):
@@ -192,12 +181,8 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("US dollars.")
 
-    # The "stop" method defines what Mycroft does when told to stop during
-    # the skill's execution.
     def stop(self):
         pass
 
-# The "create_skill()" method is used to create an instance of the skill.
-# Note that it's outside the class itself.
 def create_skill():
     return CryptoSkill()
