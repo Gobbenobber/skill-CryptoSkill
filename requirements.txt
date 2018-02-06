@@ -1,2 +1,2 @@
-#pip requirements
-gensim
+# pip requirements
+# gensim

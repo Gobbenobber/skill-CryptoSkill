@@ -81,6 +81,15 @@ class CryptoSkill(MycroftSkill):
             require("CardanoKeyword").require("MCKeyword").build()
         self.register_intent(CardanoMC_Intent, self.handle_CardanoMC_Intent)
 
+        #MONERO SECTION
+        MoneroPrice_Intent = IntentBuilder("MoneroPriceIntent").\
+            require("MoneroKeyword").require("BitcoinPriceKeyword").build()
+        self.register_intent(MoneroPrice_Intent, self.handle_MoneroPrice_Intent)
+
+        MoneroMC_Intent = IntentBuilder("MoneroMarketCapIntent").\
+            require("MoneroKeyword").require("MCKeyword").build()
+        self.register_intent(MoneroMC_Intent, self.handle_MoneroMC_Intent)
+
 #--------------------------------HANDLERS------------------------------
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
@@ -171,6 +180,19 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("US dollars.")
         
+    #MONERO SECTION
+    def handle_MoneroPrice_Intent(self, message):
+        self.speak_dialog("MoneroPrice")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/monero/").json()[0]["price_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+        
+    def handle_MoneroMC_Intent(self, message):
+        self.speak_dialog("MarketCap")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/monero/").json()[0]["market_cap_usd"]
+        self.speak(data)
+        self.speak("US dollars.")
+
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution.
     def stop(self):
