@@ -16,10 +16,10 @@ LOGGER = getLogger(__name__)
 # "class ____Skill(MycroftSkill)"
 class CryptoSkill(MycroftSkill):
 
-    # The constructor of the skill, which calls MycroftSkill's constructor
+    # The constructor of the skill,w which calls MycroftSkill's constructor
     def __init__(self):
         super(CryptoSkill, self).__init__(name="CryptoSkill")
-
+        
 #--------------------------------INITIALIZER------------------------------
 
     # This method loads the files needed for the skill's functioning, and
