@@ -25,7 +25,7 @@ This skill utilizes the CoinMarketCap API found on https://api.coinmarketcap.com
   - Price
   - Market Cap
 - Total market cap (say "cryptocurrency/-coin" and "market cap" in the same sentence)
-- Top three crypto currencies (say "top three" and "cryptocurrencies/-coins" in the same sentence)
+- Top three cryptocurrencies (say "top three" and "cryptocurrencies/-coins" in the same sentence)
 
 ### Untested features
 
