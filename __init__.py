@@ -36,6 +36,10 @@ class CryptoSkill(MycroftSkill):
         BitcoinMC_Intent = IntentBuilder("BitcoinMarketCapIntent").\
             require("BitcoinKeyword").require("MCKeyword").build()
         self.register_intent(BitcoinMC_Intent, self.handle_BitcoinMC_Intent)
+
+        Bitcoin24HrChange_Intent = IntentBuilder("Bitcoin24HrChangeIntent").\
+            require("BitcoinKeyword").require("24HrChangeKeyword").build()
+        self.register_intent(Bitcoin24HrChange_Intent, self.handle_Bitcoin24HrChange_Intent)
         
         #LITECOIN SECTION
         LitecoinPrice_Intent = IntentBuilder("LitecoinPriceIntent").\
@@ -114,7 +118,19 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
         self.speak(data)
-        self.speak("US dollars.")    
+        self.speak("US dollars.")
+        
+    def handle_Bitcoin24HrChange_Intent(self, message):
+        self.speak_dialog("24HRChange")
+        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]
+        self.speak(data["name"])
+        if data["percent_change_24h"][0] > 0:
+            self.speak("has risen by:")
+            self.speak(data["percent_change_24h"] + "pecent")
+        elif data["percent_change_24h"][0] < 0:
+            self.speak("has fallen by:")
+            self.speak(data["percent_change_24h"] + "pecent")
+        self.speak("US dollars.")
         
     #LITECOIN SECTION
     def handle_LitecoinPrice_Intent(self, message):
