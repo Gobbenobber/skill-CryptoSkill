@@ -121,7 +121,7 @@ class CryptoSkill(MycroftSkill):
         self.speak("US dollars.")
         
     def handle_Bitcoin24HrChange_Intent(self, message):
-        self.speak_dialog("24HRChange")
+        self.speak_dialog("24HrChange")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]
         self.speak(data["name"])
         if data["percent_change_24h"][0] > 0:
