@@ -109,6 +109,7 @@ class CryptoSkill(MycroftSkill):
        
     #BITCOIN SECTION
     btcurl = "https://api.coinmarketcap.com/v1/ticker/bitcoin/"
+
     def handle_BitcoinPrice_Intent(self, message):
         self.speak_dialog("BitcoinPrice")
         data = requests.get(self.btcurl).json()[0]["price_usd"]
@@ -117,13 +118,13 @@ class CryptoSkill(MycroftSkill):
         
     def handle_BitcoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["market_cap_usd"]
+        data = requests.get(self.btcurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_Bitcoin24HrChange_Intent(self, message):
         self.speak_dialog("24HrChange")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]
+        data = requests.get(self.btcurl).json()[0]
         self.speak(data["name"])
         if data["percent_change_24h"][0] > 0:
             self.speak("has risen by:")
@@ -133,67 +134,77 @@ class CryptoSkill(MycroftSkill):
             self.speak(data["percent_change_24h"] + " percent")
             
     #LITECOIN SECTION
+    ltcurl = "https://api.coinmarketcap.com/v1/ticker/litecoin/"
+
     def handle_LitecoinPrice_Intent(self, message):
         self.speak_dialog("LitecoinPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
+        data = requests.get(self.ltcurl).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_LitecoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
+        data = requests.get(self.ltcurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
     #RIPPLE SECTION
+    xrpurl = "https://api.coinmarketcap.com/v1/ticker/ripple/"
+
     def handle_RipplePrice_Intent(self, message):
         self.speak_dialog("RipplePrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["price_usd"]
+        data = requests.get(self.xrpurl).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_RippleMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ripple/").json()[0]["market_cap_usd"]
+        data = requests.get(self.xrpurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
     #ETHEREUM SECTION
+    ethurl = "https://api.coinmarketcap.com/v1/ticker/ethereum/"
+
     def handle_EthereumPrice_Intent(self, message):
         self.speak_dialog("EthereumPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ethereum/").json()[0]["price_usd"]
+        data = requests.get(self.ethurl).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_EthereumMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/ethereum/").json()[0]["market_cap_usd"]
+        data = requests.get(self.ethurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
     #CARDANO SECTION
+    adaurl = "https://api.coinmarketcap.com/v1/ticker/cardano/"
+
     def handle_CardanoPrice_Intent(self, message):
         self.speak_dialog("CardanoPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/cardano/").json()[0]["price_usd"]
+        data = requests.get(self.adaurl).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_CardanoMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/cardano/").json()[0]["market_cap_usd"]
+        data = requests.get(self.adaurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     #MONERO SECTION
+    xmrurl = "https://api.coinmarketcap.com/v1/ticker/monero/"
+
     def handle_MoneroPrice_Intent(self, message):
         self.speak_dialog("MoneroPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/monero/").json()[0]["price_usd"]
+        data = requests.get(self.xmrurl).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
     def handle_MoneroMC_Intent(self, message):
         self.speak_dialog("MarketCap")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/monero/").json()[0]["market_cap_usd"]
+        data = requests.get(self.xmrurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
 
