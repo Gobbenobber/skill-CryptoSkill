@@ -108,9 +108,10 @@ class CryptoSkill(MycroftSkill):
             self.speak("US dollars per coin.")
        
     #BITCOIN SECTION
+    btcurl = "https://api.coinmarketcap.com/v1/ticker/bitcoin/"
     def handle_BitcoinPrice_Intent(self, message):
         self.speak_dialog("BitcoinPrice")
-        data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]["price_usd"]
+        data = requests.get(self.btcurl).json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
         
@@ -137,7 +138,7 @@ class CryptoSkill(MycroftSkill):
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["price_usd"]
         self.speak(data)
         self.speak("US dollars.")
-        requests.
+        
     def handle_LitecoinMC_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/ticker/litecoin/").json()[0]["market_cap_usd"]
