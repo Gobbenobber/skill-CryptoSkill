@@ -108,8 +108,8 @@ class CryptoSkill(MycroftSkill):
             self.speak("US dollars per coin.")
        
     #BITCOIN SECTION
-    url = 'https://api.coinmarketcap.com/v1/ticker/bitcoin/'
     def handle_BitcoinPrice_Intent(self, message):
+        url = 'https://api.coinmarketcap.com/v1/ticker/bitcoin/'
         self.speak_dialog("BitcoinPrice")
         data = requests.get(url=url, params=None).json()[0]["price_usd"]
         self.speak(data)
