@@ -92,7 +92,8 @@ class CryptoSkill(MycroftSkill):
     def handle_TotalMarketCap_Intent(self, message):
         self.speak_dialog("MarketCap")
         data = requests.get("https://api.coinmarketcap.com/v1/global/").json()
-        self.speak(data["total_market_cap_usd"])
+        print(data)
+        self.speak(int(data["total_market_cap_usd"])
         self.speak("US dollars.")
     
     def handle_TopThreeCoins_Intent(self, message):
