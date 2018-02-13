@@ -50,6 +50,10 @@ class CryptoSkill(MycroftSkill):
             require("LitecoinKeyword").require("MCKeyword").build()
         self.register_intent(LitecoinMC_Intent, self.handle_LitecoinMC_Intent)
 
+        Litecoin24HrChange_Intent = IntentBuilder("Litecoin24HrChangeIntent").\
+            require("LitecoinKeyword").require("24HrChangeKeyword").build()
+        self.register_intent(Litecoin24HrChange_Intent, self.handle_Litecoin24HrChange_Intent)
+
         #RIPPLE SECTION
         RipplePrice_Intent = IntentBuilder("RipplePriceIntent").\
             require("RippleKeyword").require("BitcoinPriceKeyword").build()
@@ -58,6 +62,10 @@ class CryptoSkill(MycroftSkill):
         RippleMC_Intent = IntentBuilder("RippleMarketCapIntent").\
             require("RippleKeyword").require("MCKeyword").build()
         self.register_intent(RippleMC_Intent, self.handle_RippleMC_Intent)
+
+        Ripple24HrChange_Intent = IntentBuilder("Ripple24HrChangeIntent").\
+            require("RippleKeyword").require("24HrChangeKeyword").build()
+        self.register_intent(Ripple24HrChange_Intent, self.handle_Ripple24HrChange_Intent)
 
         #ETHEREUM SECTION
         EthereumPrice_Intent = IntentBuilder("EthereumPriceIntent").\
@@ -68,6 +76,10 @@ class CryptoSkill(MycroftSkill):
             require("EthereumKeyword").require("MCKeyword").build()
         self.register_intent(EthereumMC_Intent, self.handle_EthereumMC_Intent)
 
+        Ethereum24HrChange_Intent = IntentBuilder("Ethereum24HrChangeIntent").\
+            require("EthereumKeyword").require("24HrChangeKeyword").build()
+        self.register_intent(Ethereum24HrChange_Intent, self.handle_Ethereum24HrChange_Intent)
+
 		#CARDANO SECTION
         CardanoPrice_Intent = IntentBuilder("CardanoPriceIntent").\
             require("CardanoKeyword").require("BitcoinPriceKeyword").build()
@@ -76,6 +88,10 @@ class CryptoSkill(MycroftSkill):
         CardanoMC_Intent = IntentBuilder("CardanoMarketCapIntent").\
             require("CardanoKeyword").require("MCKeyword").build()
         self.register_intent(CardanoMC_Intent, self.handle_CardanoMC_Intent)
+
+        Cardano24HrChange_Intent = IntentBuilder("Cardano24HrChangeIntent").\
+            require("CardanoKeyword").require("24HrChangeKeyword").build()
+        self.register_intent(Cardano24HrChange_Intent, self.handle_Cardano24HrChange_Intent)
 
         #MONERO SECTION
         MoneroPrice_Intent = IntentBuilder("MoneroPriceIntent").\
@@ -86,6 +102,9 @@ class CryptoSkill(MycroftSkill):
             require("MoneroKeyword").require("MCKeyword").build()
         self.register_intent(MoneroMC_Intent, self.handle_MoneroMC_Intent)
 
+        Monero24HrChange_Intent = IntentBuilder("Monero24HrChangeIntent").\
+            require("MoneroKeyword").require("24HrChangeKeyword").build()
+        self.register_intent(Monero24HrChange_Intent, self.handle_Monero24HrChange_Intent)
 #--------------------------------HANDLERS------------------------------
     
     #GLOBAL SECTION
@@ -148,6 +167,17 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("US dollars.")
 
+    def handle_Litecoin24HrChange_Intent(self, message):
+        self.speak_dialog("24HrChange")
+        data = requests.get(self.ltcurl).json()[0]
+        self.speak(data["name"])
+        if data["percent_change_24h"][0] > 0:
+            self.speak("has risen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+        elif data["percent_change_24h"][0] < 0:
+            self.speak("has fallen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+
     #RIPPLE SECTION
     xrpurl = "https://api.coinmarketcap.com/v1/ticker/ripple/"
 
@@ -162,6 +192,17 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.xrpurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
+
+    def handle_Ripple24HrChange_Intent(self, message):
+        self.speak_dialog("24HrChange")
+        data = requests.get(self.xrpurl).json()[0]
+        self.speak(data["name"])
+        if data["percent_change_24h"][0] > 0:
+            self.speak("has risen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+        elif data["percent_change_24h"][0] < 0:
+            self.speak("has fallen by:")
+            self.speak(data["percent_change_24h"] + " percent")
 
     #ETHEREUM SECTION
     ethurl = "https://api.coinmarketcap.com/v1/ticker/ethereum/"
@@ -178,6 +219,17 @@ class CryptoSkill(MycroftSkill):
         self.speak(data)
         self.speak("US dollars.")
 
+    def handle_Ethereum24HrChange_Intent(self, message):
+        self.speak_dialog("24HrChange")
+        data = requests.get(self.ethurl).json()[0]
+        self.speak(data["name"])
+        if data["percent_change_24h"][0] > 0:
+            self.speak("has risen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+        elif data["percent_change_24h"][0] < 0:
+            self.speak("has fallen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+
     #CARDANO SECTION
     adaurl = "https://api.coinmarketcap.com/v1/ticker/cardano/"
 
@@ -192,6 +244,17 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.adaurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
+
+    def handle_Cardano24HrChange_Intent(self, message):
+        self.speak_dialog("24HrChange")
+        data = requests.get(self.adaurl).json()[0]
+        self.speak(data["name"])
+        if data["percent_change_24h"][0] > 0:
+            self.speak("has risen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+        elif data["percent_change_24h"][0] < 0:
+            self.speak("has fallen by:")
+            self.speak(data["percent_change_24h"] + " percent")
         
     #MONERO SECTION
     xmrurl = "https://api.coinmarketcap.com/v1/ticker/monero/"
@@ -207,6 +270,19 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.xmrurl).json()[0]["market_cap_usd"]
         self.speak(data)
         self.speak("US dollars.")
+
+    def handle_Monero24HrChange_Intent(self, message):
+        self.speak_dialog("24HrChange")
+        data = requests.get(self.xmrurl).json()[0]
+        self.speak(data["name"])
+        if data["percent_change_24h"][0] > 0:
+            self.speak("has risen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+        elif data["percent_change_24h"][0] < 0:
+            self.speak("has fallen by:")
+            self.speak(data["percent_change_24h"] + " percent")
+    
+    #OTHER FUNCTIONS
 
     def stop(self):
         pass
