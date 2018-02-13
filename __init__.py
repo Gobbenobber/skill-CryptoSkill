@@ -252,7 +252,7 @@ class CryptoSkill(MycroftSkill):
         if data["percent_change_24h"][0] > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0:
+        elif data["percent_change_24h"][0] < 0.0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
         
