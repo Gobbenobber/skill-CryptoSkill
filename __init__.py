@@ -249,7 +249,7 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("24HrChange")
         data = requests.get(self.adaurl).json()[0]
         self.speak(data["name"])
-        if int(data["percent_change_24h"][0]) > 0:
+        if (int(data["percent_change_24h"][0]) > 0):
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
