@@ -151,7 +151,7 @@ class CryptoSkill(MycroftSkill):
         elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else
+        else:
             self.speak("hasn't changed")
             
     #LITECOIN SECTION
