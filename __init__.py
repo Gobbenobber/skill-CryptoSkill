@@ -5,7 +5,7 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
-__author__ = 'Patrick B. Bjerregaard and Malthe Dalgaard Jensen'
+__author__ = 'Patrick B. Bjerregaard'
 
 LOGGER = getLogger(__name__)
 
