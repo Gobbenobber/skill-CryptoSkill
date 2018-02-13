@@ -145,12 +145,14 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("24HrChange")
         data = requests.get(self.btcurl).json()[0]
         self.speak(data["name"])
-        if data["percent_change_24h"][0] > 0:
+        if float(data["percent_change_24h"]) > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0:
+        elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
+        else
+            self.speak("hasn't changed")
             
     #LITECOIN SECTION
     ltcurl = "https://api.coinmarketcap.com/v1/ticker/litecoin/"
@@ -171,12 +173,14 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("24HrChange")
         data = requests.get(self.ltcurl).json()[0]
         self.speak(data["name"])
-        if data["percent_change_24h"][0] > 0.0:
+        if float(data["percent_change_24h"]) > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0.0:
+        elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
+        else
+            self.speak("hasn't changed")
 
     #RIPPLE SECTION
     xrpurl = "https://api.coinmarketcap.com/v1/ticker/ripple/"
@@ -197,12 +201,14 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("24HrChange")
         data = requests.get(self.xrpurl).json()[0]
         self.speak(data["name"])
-        if data["percent_change_24h"][0] > 0:
+        if float(data["percent_change_24h"]) > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0:
+        elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
+        else
+            self.speak("hasn't changed")
 
     #ETHEREUM SECTION
     ethurl = "https://api.coinmarketcap.com/v1/ticker/ethereum/"
@@ -223,12 +229,14 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("24HrChange")
         data = requests.get(self.ethurl).json()[0]
         self.speak(data["name"])
-        if data["percent_change_24h"][0] > 0:
+        if float(data["percent_change_24h"]) > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0:
+        elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
+        else
+            self.speak("hasn't changed")
 
     #CARDANO SECTION
     adaurl = "https://api.coinmarketcap.com/v1/ticker/cardano/"
@@ -252,9 +260,11 @@ class CryptoSkill(MycroftSkill):
         if float(data["percent_change_24h"]) > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else:
+        elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
+        else
+            self.speak("hasn't changed")
 
     #MONERO SECTION
     xmrurl = "https://api.coinmarketcap.com/v1/ticker/monero/"
@@ -275,12 +285,14 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("24HrChange")
         data = requests.get(self.xmrurl).json()[0]
         self.speak(data["name"])
-        if data["percent_change_24h"][0] > 0:
+        if float(data["percent_change_24h"]) > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0:
+        elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
+        else
+            self.speak("hasn't changed")
     
     #OTHER FUNCTIONS
 
