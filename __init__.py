@@ -179,7 +179,7 @@ class CryptoSkill(MycroftSkill):
         elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else
+        else:
             self.speak("hasn't changed")
 
     #RIPPLE SECTION
@@ -207,7 +207,7 @@ class CryptoSkill(MycroftSkill):
         elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else
+        else:
             self.speak("hasn't changed")
 
     #ETHEREUM SECTION
@@ -235,7 +235,7 @@ class CryptoSkill(MycroftSkill):
         elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else
+        else:
             self.speak("hasn't changed")
 
     #CARDANO SECTION
@@ -263,7 +263,7 @@ class CryptoSkill(MycroftSkill):
         elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else
+        else:
             self.speak("hasn't changed")
 
     #MONERO SECTION
@@ -291,7 +291,7 @@ class CryptoSkill(MycroftSkill):
         elif float(data["percent_change_24h"]) < 0:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        else
+        else:
             self.speak("hasn't changed")
     
     #OTHER FUNCTIONS
