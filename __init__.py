@@ -252,10 +252,10 @@ class CryptoSkill(MycroftSkill):
         if data["percent_change_24h"][0] > 0:
             self.speak("has risen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        elif data["percent_change_24h"][0] < 0.0:
+        else:
             self.speak("has fallen by:")
             self.speak(data["percent_change_24h"] + " percent")
-        
+
     #MONERO SECTION
     xmrurl = "https://api.coinmarketcap.com/v1/ticker/monero/"
 
