@@ -263,7 +263,7 @@ class CryptoSkill(MycroftSkill):
         self.speak_dialog("MoneroPrice")
         data = requests.get(self.xmrurl).json()[0]["price_usd"]
         self.speak(data)
-        self.speak("US dollars .")
+        self.speak("US dollars.")
         
     def handle_MoneroMC_Intent(self, message):
         self.speak_dialog("MarketCap")
