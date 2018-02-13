@@ -146,10 +146,10 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.btcurl).json()[0]
         self.speak(data["name"])
         if float(data["percent_change_24h"]) > 0:
-            self.speak("has risen by:")
+            self.speak("has increased by:")
             self.speak(data["percent_change_24h"] + " percent")
         elif float(data["percent_change_24h"]) < 0:
-            self.speak("has fallen by:")
+            self.speak("has decreased by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
             self.speak("hasn't changed")
@@ -174,10 +174,10 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.ltcurl).json()[0]
         self.speak(data["name"])
         if float(data["percent_change_24h"]) > 0:
-            self.speak("has risen by:")
+            self.speak("has increased by:")
             self.speak(data["percent_change_24h"] + " percent")
         elif float(data["percent_change_24h"]) < 0:
-            self.speak("has fallen by:")
+            self.speak("has decreased by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
             self.speak("hasn't changed")
@@ -202,10 +202,10 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.xrpurl).json()[0]
         self.speak(data["name"])
         if float(data["percent_change_24h"]) > 0:
-            self.speak("has risen by:")
+            self.speak("has increased by:")
             self.speak(data["percent_change_24h"] + " percent")
         elif float(data["percent_change_24h"]) < 0:
-            self.speak("has fallen by:")
+            self.speak("has decreased by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
             self.speak("hasn't changed")
@@ -230,10 +230,10 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.ethurl).json()[0]
         self.speak(data["name"])
         if float(data["percent_change_24h"]) > 0:
-            self.speak("has risen by:")
+            self.speak("has increased by:")
             self.speak(data["percent_change_24h"] + " percent")
         elif float(data["percent_change_24h"]) < 0:
-            self.speak("has fallen by:")
+            self.speak("has decreased by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
             self.speak("hasn't changed")
@@ -258,10 +258,10 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.adaurl).json()[0]
         self.speak(data["name"])
         if float(data["percent_change_24h"]) > 0:
-            self.speak("has risen by:")
+            self.speak("has increased by:")
             self.speak(data["percent_change_24h"] + " percent")
         elif float(data["percent_change_24h"]) < 0:
-            self.speak("has fallen by:")
+            self.speak("has decreased by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
             self.speak("hasn't changed")
@@ -286,10 +286,10 @@ class CryptoSkill(MycroftSkill):
         data = requests.get(self.xmrurl).json()[0]
         self.speak(data["name"])
         if float(data["percent_change_24h"]) > 0:
-            self.speak("has risen by:")
+            self.speak("has increased by:")
             self.speak(data["percent_change_24h"] + " percent")
         elif float(data["percent_change_24h"]) < 0:
-            self.speak("has fallen by:")
+            self.speak("has decreased by:")
             self.speak(data["percent_change_24h"] + " percent")
         else:
             self.speak("hasn't changed")
