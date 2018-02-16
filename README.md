@@ -6,24 +6,22 @@ This skill utilizes the CoinMarketCap API found on <https://api.coinmarketcap.co
 
 ### Working features
 
-- Bitcoin (say "Bitcoin" and an option below in the same sentence)
-  - Price
-  - Market cap
-- Litecoin (say "Litecoin" and an option below in the same sentence)
-  - Price
-  - Market cap
-- Ripple (say "Ripple" and an option below in the same sentence)
-  - Price
-  - Market cap
-- Cardano (say "Cardano" and an option below in the same sentence)
-  - Price
-  - Market cap
-- Ethereum (say "Ethereum" and an option below in the same sentence)
-  - Price
-  - Market Cap
-- Monero (say "Monero" and an option below in the same sentence)
-  - Price
-  - Market Cap
+The following coins have been implemented:
+- Bitcoin
+- Cardano
+- Ethereum
+- Litecoin
+- Monero
+- Ripple
+
+The following features have been implemented:
+- Price
+- Market cap
+- 24 hour change
+
+To make use of a given functionality, simply say a given coin's name or ticker (e.g. XRP for Ripple) and one of the implemented features in the same sentence. E.g. "Hey Mycroft, what's the market cap of Litecoin?" or "Hey Mycroft, what's the 24 hour change of Monero?".
+
+Additionally, this skill provides the following features related to the cryptocurrency market in general:
 - Total market cap (say "cryptocurrency/-coin" and "market cap" in the same sentence)
 - Top three cryptocurrencies (say "top three" and "cryptocurrencies/-coins" in the same sentence)
 
@@ -33,7 +31,7 @@ None at this moment.
 
 ### Known issues
 
-- Total cryptocurrency market cap not working as intended - does not fetch data successfully.
+None at this moment.
 
 ### TODO
 
@@ -45,4 +43,5 @@ None at this moment.
   - Market cap
     - Total market cap
     - 24 hour percent change
+- Smarter implementation
 - More to come...
